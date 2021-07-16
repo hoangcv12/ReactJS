@@ -20,18 +20,11 @@ function App() {
           <ul className="navbar-nav me-auto mt-md-0 ">
             <li className="nav-item hidden-sm-down">
               <form className="app-search ps-3">
-                <input type="text" className="form-control" placeholder="Search for..." /> <a className="srh-btn"><i class="fas fa-search"></i></a>
+                <input type="text" className="form-control" placeholder="Search for..." /> <a className="srh-btn" href><i class="fas fa-search"></i></a>
               </form>
             </li>
           </ul>
-            <ul className="navbar-nav">
-             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../assets/images/users/1.jpg" alt="user" className="profile-pic me-2" />Markarn Doe
-              </a>
-              <ul className="dropdown-menu show" aria-labelledby="navbarDropdown" />
-            </li>
-          </ul>
+            
         </div>
       </nav>
     </header>
