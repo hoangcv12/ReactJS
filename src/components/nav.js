@@ -28,8 +28,8 @@ export default function Nav() {
         <div className="scroll-sidebar">
           <nav className="sidebar-nav">
             <ul id="sidebarnav">
-              <li className="sidebar-item" > <span className="hide-menu"><NavLink to="/home" className="sidebar-link  "  aria-expanded="true" ><i class="me-3 fas fa-tachometer-alt"></i>Dashboard</NavLink></span></li>
-              <li className="sidebar-item" > <span className="hide-menu"><NavLink to="/products" className="sidebar-link  "  aria-expanded="true" ><i class="me-3 fas fas fa-box-open"></i>Products</NavLink></span></li>
+              <li className="sidebar-item" > <NavLink to="/home" className="sidebar-link " ><i class="me-3 fas fa-tachometer-alt"></i>Dashboard</NavLink></li>
+              <li className="sidebar-item" > <span className="hide-menu"><NavLink to="/products" className="sidebar-link  "  aria-expanded="false" ><i class="me-3 fas fas fa-box-open"></i>Products</NavLink></span></li>
               <li className="sidebar-item" > <span className="hide-menu"><NavLink to="/categorys" className="sidebar-link  "  aria-expanded="true" ><i class="me-3 fas fa-list-alt"></i>Categorys</NavLink></span></li>
 
             </ul>
