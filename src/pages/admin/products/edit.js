@@ -1,19 +1,38 @@
-import React from 'react';
-import {useForm} from "react-hook-form";
+import React, {useState, useEffect} from 'react';
+import { useForm} from "react-hook-form";
+import { useParams, useHistory  } from 'react-router';
+import {  useDispatch } from "react-redux";
+import { editProduct } from 'redux/actions/product';
+import { get } from 'api/productApi';
 
-export default function Add(props) {
-const {register,handleSubmit,formState: {errors}} = useForm();
+export default function Edit() {
+const {id} = useParams();
+const history = useHistory();
+ const [product, setProduct] = useState({});
+const dispatch = useDispatch();
+
+useEffect(() => {
+  const getProduct = async () => {
+    try {
+      const { data } = await get(id);
+      setProduct(data);
+      reset(data);
+    } catch (error) {}
+  };
+  getProduct();
+}, []);
+const {register,handleSubmit,formState: {errors},reset} = useForm();
 const onSubmit = (data) => {
-    const fakeValue = {
-        id: Math.random().toString(36).substring(7),...data
+    const Value = {
+        id: id,...data
     };
-    
-props.onAdd(fakeValue);
+    dispatch(editProduct(Value));
+    history.push("/admin/products");
 }
     return (
-        <div className="ms-sm-auto col-lg-10 px-md-5 mt-5 " >
-             <h2 className="h2">Thêm sản phẩm</h2>
-     
+        <div className="col-5 offset-2 mt-5  p-3 px-md-4">
+            <h2 className="h2">Cập nhật sản phẩm</h2>
+      
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label className="form-label">Tên sản phẩm</label>
@@ -21,6 +40,7 @@ props.onAdd(fakeValue);
             type="text"
             className="form-control"
             // name="name"
+            defaultValue={product.name}
             {...register("name", { required: true })}
             // onChange={onHandleChange}
           />
@@ -33,6 +53,7 @@ props.onAdd(fakeValue);
         <div className="mb-3">
           <label className="form-label">Giá sản phẩm</label>
           <input
+            defaultValue={product.price}
             type="number"
             className="form-control"
             // name="price"
@@ -52,18 +73,17 @@ props.onAdd(fakeValue);
             // name="status"
             // onChange={onHandleChange}
             {...register("status")}
-            defaultValue="0"
+            defaultValue={product.status}
           >
-            <option value="0">Hết hàng</option>
-            <option value="1">Còn hàng</option>
+            <option value="false">Hết hàng</option>
+            <option value="true">Còn hàng</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary" >
-          Thêm sản phẩm
+        
+        <button type="submit" className="btn btn-info">
+          Lưu thay đổi
         </button>
-        <button type="reset" className="btn btn-info">reset</button>
       </form>
         </div>
     )
 }
-

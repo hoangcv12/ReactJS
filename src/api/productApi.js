@@ -24,3 +24,13 @@ export const get = (id) => {
   const url = `/products/${id}`;
   return axiosClient.get(url);
 }
+
+export const getPaginate = (page) => {
+  const url = `/products?_page=${page}&_limit=8`;
+  return axiosClient.get(url);
+}
+
+export const getcate = (page,idcate) => {
+  const url = `/products?idcate=${idcate}&_page=${page}&_limit=8`;
+  return axiosClient.get(url);
+}

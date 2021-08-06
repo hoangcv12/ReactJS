@@ -2,13 +2,18 @@
 import { useEffect, useState } from "react";
 import Routes from './router';
 import { getAll, add, remove, edit } from "./api/productApi";
-import './App.css';
+import {useHistory} from 'react-router-dom';
+import Alertinfo from "alertinfo";
+import { deleteProduct } from "redux/actions/product";
 
 function App() {
+  const history = useHistory();
   const [products, setProducts] = useState([]);
   useEffect(() => {
     // call api
+    
     const getProducts = async () => {
+      
       try {
         const { data } = await getAll();
         setProducts(data);
@@ -50,11 +55,11 @@ const onEditHandler = async (item) =>{
   }
 }
   return (
-    <Routes products={products}
-     onAdd={onAddHandler}
-     onDelete={onDeleteHandler}
-     onUp={onEditHandler}
-     />
+    <>
+    <Alertinfo/>
+    <Routes Delete={onDeleteHandler}/>
+     
+    </>
   );
 }
 
