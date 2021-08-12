@@ -18,7 +18,7 @@ import EditC from 'pages/admin/categorys/edit';
 import ProductsWebcate from 'pages/web/productcate';
 import Addcart from 'pages/web/addcart';
 
-export default function router(props) {
+export default function router() {
     return (
         <Router>
             <Switch>
@@ -26,7 +26,7 @@ export default function router(props) {
                     <Adminlayout>
                         <Switch>
                             <Route exact path="/admin/products">
-                                <Indexproduct  {...props}/>
+                                <Indexproduct  />
                             </Route>
                             <Route exact path="/admin/products/add">
                                 <AddP />
